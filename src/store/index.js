@@ -16,7 +16,8 @@ export default new Vuex.Store({
         notificationCenterOpen: false,
 
         apps: {
-            vscode: { name: 'Visual Studio Code', isMaximized: false, isMinimized: false, isActive: false }
+            vscode: { name: 'Visual Studio Code', isMaximized: false, isMinimized: false, isActive: false },
+            explorer: { name: 'Windows Explorer', isMaximized: false, isMinimized: false, isActive: false }
         }
 
     },

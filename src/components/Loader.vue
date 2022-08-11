@@ -1,21 +1,16 @@
-<template>
-    <div class="loader">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
-</template>
-
 <script>
-export default {
-    name: 'Loader.vue'
-}
+import Vue from 'vue'
+
+const circleNumbs = [1, 2, 3, 4, 5]
+const drawCircles = (c) => circleNumbs.map((index) => c('div', { class: 'circle', key: index }))
+
+export default Vue.extend({
+    name: 'Loader',
+    render: (c) => c('div', { class: 'loader' }, drawCircles(c))
+})
 </script>
 
 <style lang="scss" scoped>
-
 .loader {
     width: 40px;
     height: 40px;
@@ -59,7 +54,6 @@ export default {
     .circle:nth-child(5) {
         animation-delay: 960ms;
     }
-
 }
 
 @keyframes orbit {
@@ -68,35 +62,41 @@ export default {
         opacity: 1;
         animation-timing-function: ease-out;
     }
+
     7% {
         transform: translateX(-50%) translateY(-50%) rotate(345deg);
         animation-timing-function: linear;
     }
+
     30% {
         transform: translateX(-50%) translateY(-50%) rotate(455deg);
         animation-timing-function: ease-in-out;
     }
+
     39% {
         transform: translateX(-50%) translateY(-50%) rotate(690deg);
         animation-timing-function: linear;
     }
+
     70% {
         transform: translateX(-50%) translateY(-50%) rotate(815deg);
         opacity: 1;
         animation-timing-function: ease-out;
     }
+
     75% {
         transform: translateX(-50%) translateY(-50%) rotate(945deg);
         animation-timing-function: ease-out;
     }
+
     76% {
         transform: translateX(-50%) translateY(-50%) rotate(945deg);
         opacity: 0;
     }
+
     100% {
         transform: translateX(-50%) translateY(-50%) rotate(945deg);
         opacity: 0;
     }
 }
-
 </style>

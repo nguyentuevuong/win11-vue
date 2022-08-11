@@ -1,19 +1,19 @@
 <template>
-    <div class="desktop flex flex-col w-full h-full overflow-hidden">
-        <Workspace/>
-        <TaskBar/>
-        <StartMenu/>
-        <Calendar/>
-        <NotificationCenter/>
+    <div class="desktop flex flex-col w-screen h-screen overflow-hidden">
+        <Workspace />
+        <TaskBar />
+        <StartMenu />
+        <Calendar />
+        <NotificationCenter />
     </div>
 </template>
 
 <script>
-import Workspace from '../components/Workspace'
-import TaskBar from '../components/TaskBar'
-import StartMenu from '../components/StartMenu'
-import NotificationCenter from '../components/NotificationCenter'
-import Calendar from '../components/Calendar'
+import Workspace from './Workspace'
+import TaskBar from './TaskBar'
+import StartMenu from './StartMenu'
+import NotificationCenter from './NotificationCenter'
+import Calendar from './Calendar'
 
 export default {
     name: 'Desktop',
@@ -28,7 +28,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .desktop {
     background-image: url('../assets/wallpapers/light.jpg');
     background-position: center;
@@ -40,5 +39,4 @@ export default {
         background-image: url('../assets/wallpapers/dark.jpg');
     }
 }
-
 </style>

@@ -1,30 +1,24 @@
 <template>
     <div class="desktop-icons flex-grow p-1">
 
-        <grid-layout
-            :layout.sync="items"
-            :col-num="cols"
-            :max-rows="rows"
-            :row-height="112"
-            :is-draggable="true"
-            :is-resizable="false"
-            :is-mirrored="false"
-            :vertical-compact="false"
-            :margin="[2, 2]"
-            :use-css-transforms="true"
-            style="width: 100%; height: 100%;">
+        <grid-layout :layout.sync="items" :col-num="cols" :max-rows="rows" :row-height="96" :is-draggable="true"
+            :is-resizable="false" :is-mirrored="false" :vertical-compact="false" :margin="[2, 2]"
+            :use-css-transforms="true" class="w-screen h-screen">
 
-            <grid-item v-for="item in items" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" style="touch-action: none;">
-                <div class="app flex flex-col justify-center items-center w-24 h-28 hover:bg-white hover:bg-opacity-10 focus:bg-blue-500 focus:bg-opacity-10 border border-transparent rounded-sm" :class="{ 'bg-blue-500 hover:bg-blue-500 bg-opacity-10': activeItem === item.i }" @mouseup="activeItem = item.i">
-                    <img :src="require(`@/assets/icons/${item.icon}.png`)" width="43" height="43">
-                    <span class="text-white text-xs text-center app-name">{{ item.label }}</span>
-                </div>
+            <grid-item v-for="item in items" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i"
+                style="touch-action: none;"
+                class="app flex flex-col justify-center items-center w-24 h-24 hover:bg-white hover:bg-opacity-10 focus:bg-blue-500 focus:bg-opacity-10 border border-transparent rounded-md"
+                :class="{ 'bg-blue-500 hover:bg-blue-500 bg-opacity-10': activeItem === item.i }"
+                @mouseup="activeItem = item.i">
+
+                <img :src="require(`@/assets/icons/${item.icon}.png`)" width="43" height="43">
+                <span class="text-white text-xs text-center app-name">{{ item.label }}</span>
             </grid-item>
 
         </grid-layout>
 
         <transition name="window">
-            <VSCode v-show="apps.vscode.isActive"/>
+            <VSCode v-show="apps.vscode.isActive" />
         </transition>
 
     </div>
@@ -33,7 +27,7 @@
 <script>
 import VueGridLayout from 'vue-grid-layout'
 import VSCode from './apps/VSCode'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     name: 'Workspace',
@@ -120,7 +114,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .desktop-icons {
 
     .app {
@@ -156,5 +149,4 @@ export default {
 .window-leave-active {
     transition: all 0.3s;
 }
-
 </style>

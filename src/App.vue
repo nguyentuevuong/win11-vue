@@ -1,11 +1,11 @@
 <template>
-    <div class="screen h-full relative" :class="{ 'dark': darkMode, 'night-light': nightLight }">
+    <div class="w-screen h-screen relative overflow-hidden" :class="{ 'dark': darkMode, 'night-light': nightLight }">
+        <Desktop />
 
-        <router-view/>
-
-        <div class="bootloader absolute left-0 top-0 w-full h-full bg-black flex flex-col justify-center items-center w-full h-full overflow-hidden z-50" v-if="isLoading">
-            <img src="@/assets/boot-logo.png" width="180" class="mb-48"/>
-            <Loader/>
+        <div class="bootloader absolute left-0 top-0 w-screen h-screen bg-black flex flex-col justify-center items-center overflow-hidden z-50"
+            v-if="isLoading">
+            <img src="@/assets/boot-logo.png" width="180" class="mb-48" />
+            <Loader />
         </div>
 
     </div>
@@ -13,11 +13,13 @@
 
 <script>
 import Loader from './components/Loader'
+import Desktop from './components/Desktop.vue'
 
 export default {
     name: 'App',
     components: {
-        Loader
+        Loader,
+        Desktop
     },
     computed: {
         darkMode() {
@@ -38,11 +40,13 @@ export default {
         })
     }
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
 <style lang="scss">
-
-html, body {
+html,
+body {
     height: 100%;
     overflow: hidden;
 }
@@ -87,6 +91,5 @@ html, body {
 .bootloader {
     cursor: none;
 }
-
 </style>
 
